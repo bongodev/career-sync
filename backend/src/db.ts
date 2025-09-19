@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { envConfig } from "@/config/index";
 
+import logger from "./config/logger";
+
 const connectDB = async () => {
   try {
     const mongoURI: string = envConfig.DB.MONGO_URI ?? "";
@@ -12,10 +14,10 @@ const connectDB = async () => {
     mongoose.connect(mongoURI, {
       dbName: envConfig.DB.DB_NAME,
     });
-    
-    console.log("Database connection successful");
+
+    logger.info("Database connection successful");
   } catch (error) {
-    console.log("Database connection failed");
+    logger.error(error, "Database connection failed");
   }
 };
 
