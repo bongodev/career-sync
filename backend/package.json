@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon --exec tsx src/app.ts",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "tsc",
