@@ -1,19 +1,19 @@
-import pino from "pino";
+import pino from 'pino';
 
-import envConfig from "./envConfig";
+import envConfig from './envConfig';
 
 const transport = pino.transport({
   options: {
     colorize: true,
     singleLine: true,
   },
-  target: "pino-pretty",
+  target: 'pino-pretty',
 });
 
 const logger = pino(
   {
     level: envConfig.LOG_LEVEL,
-    redact: ["user.password", "user.phone"],
+    redact: ['user.password', 'user.phone'],
     timestamp: pino.stdTimeFunctions.isoTime,
     serializers: {
       req: (req) => {
@@ -21,7 +21,6 @@ const logger = pino(
           method: req.method,
           url: req.url,
           userAgent: req.headers?.['user-agent'],
-
         };
       },
       res: (res) => {
@@ -32,7 +31,7 @@ const logger = pino(
       },
     },
   },
-  transport
+  transport,
 );
 
 export default logger;
