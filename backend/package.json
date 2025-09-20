@@ -5,6 +5,7 @@
   "main": "./src/app.ts",
   "scripts": {
     "dev": "nodemon --exec tsx src/app.ts",
+    "format": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "tsc",
