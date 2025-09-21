@@ -22,7 +22,8 @@
     "express": "^5.1.0",
     "mongoose": "^8.18.0",
     "pino": "^9.10.0",
-    "pino-http": "^4.3.0"
+    "pino-http": "^4.3.0",
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
