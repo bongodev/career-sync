@@ -1,8 +1,13 @@
 services:
-  mongodb:
+  cs-mongodb:
     image: mongo
+    container_name: cs-mongodb
+    restart: unless-stopped
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
     ports:
       - "27020:27017"
+    volumes:
+      - ./.data/mongo/data:/data/db
+      - ./.data/mongo/config:/data/configdb
