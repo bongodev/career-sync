@@ -17,7 +17,6 @@ export const getCompanyByID = async (req: Request, res: Response) => {
   try {
     const { _id } = req.params;
     const company = await companyServices.getCompanyByID(_id);
-    console.log(company);
 
     if (!company || company.length === 0) {
       res.status(404).json({ message: 'No company found with this id' });
