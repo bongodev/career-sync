@@ -1,14 +1,17 @@
-import './App.css';
-import { Button } from './components/ui/button';
+import{Outlet}from "react-router"
+import './App.css'
 
 function App() {
+  
+
   return (
-    <>
-      <div className="flex min-h-svh flex-col items-center justify-center">
-        <Button>Click me</Button>
-      </div>
-    </>
-  );
+    <div>
+    <header>This is header</header>
+    <Outlet/>
+    <footer>This is footer</footer>
+    </div>
+    
+  )
 }
 
 export default App;
