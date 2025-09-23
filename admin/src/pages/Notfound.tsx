@@ -45,8 +45,8 @@ export default function Notfound() {
             maxWidth: '600px',
           }}
         >
-          The page you are looking for might have been removed, had its name changed,
-          or is temporarily unavailable.
+          The page you are looking for might have been removed, had its name
+          changed, or is temporarily unavailable.
         </Typography>
         <Button
           variant="contained"
