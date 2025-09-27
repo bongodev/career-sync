@@ -31,6 +31,11 @@ export const getCompanies = async ({
   };
 };
 
+export const getCompanyByID = async (id: string) => {
+  const company = await CompanyModel.find({ _id: id });
+  return company;
+};
+
 export const updateCompanyByID = async (id: string, newData: CreateCompany) => {
   const createUpdatedCompany = await CompanyModel.findByIdAndUpdate(
     id,

@@ -26,6 +26,15 @@ export const errorHandler = (
     return;
   }
 
+  // Mongoose cast error (invalid ObjectId, etc.)
+  if (error instanceof mongoose.Error.CastError) {
+    res.status(400).json({
+      status: 'error',
+      message: `Invalid ${error.path}: ${error.value}`,
+    });
+    return;
+  }
+
   // Mongoose duplicate key error (E11000)
   if (error instanceof mongo.MongoServerError && error.code === 11000) {
     res.status(400).json({

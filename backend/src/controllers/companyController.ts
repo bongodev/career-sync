@@ -13,6 +13,18 @@ export const getCompanies = async (req: Request, res: Response) => {
   res.status(200).json(result);
 };
 
+export const getCompanyByID = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const company = await companyServices.getCompanyByID(id);
+
+  if (!company || company.length === 0) {
+    res.status(404).json({ message: 'No company found with this id' });
+    return;
+  }
+
+  res.status(200).json(company);
+};
+
 export const updateCompanyByID = async (req: Request, res: Response) => {
   const { id } = req.params;
   const newData = req.body;
