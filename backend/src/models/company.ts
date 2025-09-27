@@ -10,7 +10,7 @@ const companySchema = new Schema<Company>(
     website: { type: String, required: true },
     location: { type: String, required: true },
   },
-  { timestamps: true, toJSON: { virtuals: true }, id: false },
+  { timestamps: true, toJSON: { virtuals: true } },
 );
 
 export const CompanyModel = model<Company>('Company', companySchema);
