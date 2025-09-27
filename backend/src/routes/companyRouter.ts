@@ -11,7 +11,7 @@ router.post(
   companyController.createCompany,
 );
 router.get('/', companyController.getCompanies);
-router.get('/:_id', companyController.getCompanyByID);
+router.get('/:id', companyController.getCompanyByID);
 router.patch(
   '/:id',
   validatePayload(UpdateCompanySchema),
