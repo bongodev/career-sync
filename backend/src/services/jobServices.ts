@@ -10,7 +10,7 @@ export const getJob = async (companyId: string, jobId: string) => {
   const job = await JobModel.findOne({
     company: companyId,
     _id: jobId,
-  });
+  }).populate('company');
 
   return job;
 };
