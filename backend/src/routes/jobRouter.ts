@@ -10,5 +10,6 @@ router.post(
   validatePayload(CreateJobSchema),
   jobController.createJob,
 );
+router.get('/:companyId/jobs', jobController.getAllJobs);
 
 export default router;
