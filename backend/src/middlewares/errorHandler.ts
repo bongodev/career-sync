@@ -2,9 +2,11 @@ import { NextFunction, Request, Response } from 'express';
 import mongoose, { mongo } from 'mongoose';
 import z from 'zod';
 
+import logger from '@/configs/logger';
+
 export const errorHandler = (
   error: Error,
-  _req: Request,
+  req: Request,
   res: Response,
   _next: NextFunction,
 ): void => {
@@ -45,10 +47,13 @@ export const errorHandler = (
     return;
   }
 
-  const err = error as { message?: string; status?: number };
+  logger.error(
+    error,
+    `Unhandled error occurred in request ${req.method} ${req.url}`,
+  );
 
-  res.status(err.status || 500).json({
+  res.status(500).json({
     status: 'error',
-    message: err.message || 'Internal Server Error',
+    message: 'Internal Server Error',
   });
 };

@@ -3,13 +3,8 @@ import { ZodType } from 'zod';
 
 export const validatePayload = (schema: ZodType) => {
   return (req: Request, _res: Response, next: NextFunction): void => {
-    const result = schema.safeParse(req.body);
-
-    if (!result.success) {
-      throw result.error;
-    }
-
-    req.body = result.data;
+    const payload = req.body;
+    schema.parse(payload);
     next();
   };
 };

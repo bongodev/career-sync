@@ -29,6 +29,7 @@ const logger = pino(
           statusMessage: res.statusMessage,
         };
       },
+      err: pino.stdSerializers.err,
     },
   },
   transport,
