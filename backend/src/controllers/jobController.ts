@@ -8,8 +8,8 @@ export const createJob = async (req: Request, res: Response) => {
 
 export const getAllJobs = async (req: Request, res: Response) => {
   const { companyId } = req.params;
-  const page = parseInt(req.query.page as string) || 0;
-  const limit = parseInt(req.query.limit as string) || 10;
+  const page = parseInt(req.query.page || '0');
+  const limit = parseInt(req.query.limit || '10');
   const allJobs = await jobServices.getAllJobs(companyId, { page, limit });
 
   res.status(200).json({
