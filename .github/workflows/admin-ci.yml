@@ -3,8 +3,14 @@ name: CI - Admin
 on:
   push:
     branches: [main]
+    paths:
+      - '.github/workflows/admin-ci.yml'
+      - 'admin/**'
   pull_request:
     branches: [main]
+    paths:
+      - '.github/workflows/admin-ci.yml'
+      - 'admin/**'
   workflow_dispatch:
 
 jobs:

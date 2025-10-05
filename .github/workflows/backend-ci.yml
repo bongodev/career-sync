@@ -3,8 +3,14 @@ name: CI - Backend
 on:
   push:
     branches: [main]
+    paths:
+      - '.github/workflows/backend-ci.yml'
+      - 'backend/**'
   pull_request:
     branches: [main]
+    paths:
+      - '.github/workflows/backend-ci.yml'
+      - 'backend/**'
   workflow_dispatch:
 
 jobs:
