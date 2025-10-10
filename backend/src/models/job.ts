@@ -4,7 +4,7 @@ import { EmploymentType, WorkPlaceType, JobStatus } from '@/types/index';
 
 const JobSchema = new Schema<Job>(
   {
-    title: { type: String, required: true },
+    title: { type: String, required: true, unique: true },
     jobDescription: { type: String, required: true },
     openingDate: { type: Date, required: true },
     applicationDeadline: { type: Date, required: true },

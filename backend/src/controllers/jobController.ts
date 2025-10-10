@@ -29,3 +29,28 @@ export const getJob = async (req: Request, res: Response) => {
 
   res.status(200).json({ data: job, status: 'success' });
 };
+
+export const updateJob = async (req: Request, res: Response) => {
+  const { jobId } = req.params;
+  const updatedJobData = req.body;
+
+  // Do not allow users to update company reference
+  // OR company ID
+  if (updatedJobData?.company) {
+    res
+      .status(403)
+      .json({ message: 'Cannot update company reference', status: 'fail' });
+    return;
+  }
+
+  const updatedJob = await jobServices.updateJob(jobId, updatedJobData);
+
+  if (!updatedJob) {
+    res
+      .status(404)
+      .json({ message: 'No company found with this id', status: 'failed' });
+    return;
+  }
+
+  res.status(201).json({ data: updatedJob, status: 'success' });
+};

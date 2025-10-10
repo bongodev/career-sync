@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { jobController } from '@/controllers';
 import { validatePayload } from '@/middlewares/validatePayload';
-import { CreateJobSchema } from '@/schemas';
+import { CreateJobSchema, UpdateJobSchema } from '@/schemas';
 
 const router = Router();
 
@@ -12,5 +12,10 @@ router.post(
 );
 router.get('/:companyId/jobs', jobController.getAllJobs);
 router.get('/:companyId/jobs/:jobId', jobController.getJob);
+router.put(
+  '/:companyId/jobs/:jobId',
+  validatePayload(UpdateJobSchema),
+  jobController.updateJob,
+);
 
 export default router;

@@ -40,3 +40,11 @@ export const getJob = async (companyId: string, jobId: string) => {
 
   return job;
 };
+
+export const updateJob = async (id: string, newJobData: CreateJob) => {
+  const updateJobData = await JobModel.findByIdAndUpdate(id, newJobData, {
+    new: true,
+  });
+
+  return updateJobData;
+};
