@@ -12,5 +12,6 @@ router.post(
 );
 router.get('/:companyId/jobs', jobController.getAllJobs);
 router.get('/:companyId/jobs/:jobId', jobController.getJob);
+router.delete('/:companyId/jobs/:jobId', jobController.deleteJob);
 
 export default router;

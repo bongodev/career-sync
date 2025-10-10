@@ -1,6 +1,7 @@
 import { model, Schema } from 'mongoose';
 import type { Job } from '@/schemas';
 import { EmploymentType, WorkPlaceType, JobStatus } from '@/types/index';
+import softDeletePlugin from '@/plugins/softDelete.plugin';
 
 const JobSchema = new Schema<Job>(
   {
@@ -22,9 +23,10 @@ const JobSchema = new Schema<Job>(
     vacancy: { type: Number, required: true },
     tags: [{ type: String }],
     status: { type: String, enum: JobStatus, default: 'draft' },
-    deletedAt: { type: Date, default: null },
   },
   { timestamps: true, virtuals: true },
 );
+
+JobSchema.plugin(softDeletePlugin);
 
 export const JobModel = model('Job', JobSchema);

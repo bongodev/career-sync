@@ -40,3 +40,16 @@ export const getJob = async (companyId: string, jobId: string) => {
 
   return job;
 };
+
+export const deleteJob = async (companyId: string, jobId: string) => {
+  const findJob = await JobModel.findOne({ company: companyId, _id: jobId });
+
+  if (!findJob || findJob?.deletedAt) {
+    return false;
+  }
+
+  // @ts-expect-error: softDelete is added by the Mongoose plugin, not in the type definition
+  await findJob.softDelete();
+
+  return true;
+};
