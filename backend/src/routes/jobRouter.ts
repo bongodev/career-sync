@@ -17,5 +17,6 @@ router.put(
   validatePayload(UpdateJobSchema),
   jobController.updateJob,
 );
+router.delete('/:companyId/jobs/:jobId', jobController.deleteJob);
 
 export default router;
